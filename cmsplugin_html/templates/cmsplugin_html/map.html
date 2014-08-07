@@ -1,0 +1,22 @@
+{% load customtags cms_tags staticfiles sekizai_tags %}
+
+{% addtoblock "js" %}
+    {% if instance.usar_tooltip %}
+        {% js "tooltip.min.js" ext=True %}
+    {% endif %}
+{% endaddtoblock %}
+
+<section class="html-map">
+    <img src="{{ instance.imagem.url }}" usemap="#MapPlugin{{ instance.pk }}" border="0">
+    <map name="MapPlugin{{ instance.pk }}" id="MapPlugin{{ instance.pk }}">
+        {% for area in areas %}
+            <area shape="{{ area.shape }}"
+                  coords="{{ area.coords }}"
+                  href="{{ area.href }}"
+                  {% if instance.usar_tooltip %}
+                      onmouseover="toolTip('{{area.mensagem}}')"
+                      onmouseout="toolTip()"
+                  {% endif %}>
+        {% endfor %}
+    </map>
+</section>

@@ -1,0 +1,32 @@
+{% load cms_tags %}
+{% load customtags %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% addtoblock "css" %}
+    <link href="{% static "ext/bootstrap/plugins/css/carousel.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/core/cmsplugins/carousel.css" %}" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    {% js "core/bootstrap/plugins/carousel-tpls.js" test=False %}
+    {% js "bootstrap/plugins/js/carousel.js" ext=True %}
+    <script type="text/javascript">
+        APPS_NAMES = ["ui.bootstrap", "ui.bootstrap.tpls"];
+        for (index = 0; index < APPS_NAMES.length; ++index) {
+            if (mainApp.requires.indexOf(APPS_NAMES[index]) === -1) {
+                mainApp.requires.push(APPS_NAMES[index]);
+            }
+        }
+    </script>
+{% endaddtoblock %}
+
+<section {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+    <carousel interval="{{ instance.intervalo }}" style="width:{{ instance.largura }}px">
+        {% for plugin in instance.child_plugin_instances %}
+            <slide {% if forloop.counter0 == 0 %}active{% endif %} style="height: {{ instance.altura }}px">
+                {% render_plugin plugin %}
+            </slide>
+        {% endfor %}
+    </carousel>
+</section>

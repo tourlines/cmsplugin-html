@@ -1,0 +1,29 @@
+{% load staticfiles sekizai_tags %}
+
+{% addtoblock "css" %}
+    <link href="{% static "css/core/cmsplugins/endereco.css" %}" media="screen" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+
+<section class="address-plugin">
+    <div class="border"></div>
+    <section>
+        <address class="vcard">
+            <span class="fn">{{ instance.nome }}</span>
+            <span class="adr">
+                Rua <span class="street-address">{{ instance.logradouro }}, {{ instance.numero }}</span> -
+                <span class="locality">{{ instance.bairro }} - {{ instance.cidade }} </span> -
+                <span class="region">{{ instance.estado }}</span> | CEP
+                <span class="postal-code">{{ instance.cep }}</span> |
+            </span>
+            Tel.:
+            <span class="tel">
+                <span class="type">Work</span>
+                <span class="value">{{ instance.telefone }}</span>
+            </span> |
+            <span class="email">{{ instance.email }}</span>
+        </address>
+        {{ instance.texto }}
+    </section>
+</section>
+
+
