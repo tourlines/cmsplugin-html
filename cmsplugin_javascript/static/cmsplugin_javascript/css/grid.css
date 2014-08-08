@@ -1,0 +1,26 @@
+.carousel-cabecalho {
+    background-color: #BAEBA9;
+    padding: 0px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    height: 40px
+}
+
+.carousel-imagem-titulo {
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+}
+
+.carousel-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    float: left;
+    line-height: 30px;
+    color: #042575;
+}
+
+.carousel-slider-item {
+    float: left;
+}

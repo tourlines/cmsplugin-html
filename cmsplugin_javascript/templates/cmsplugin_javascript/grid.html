@@ -1,0 +1,38 @@
+{% extends "cmsplugin_javascript/carousel.html" %}
+{% load cms_tags %}
+{% load staticfiles %}
+{% load sekizai_tags %}
+
+{% block carousel %}
+
+    {% addtoblock "css" %}
+        <link href="{% static "cmsplugin_javascript/css/grid.css" %}" media="screen" rel="stylesheet" type="text/css" />
+    {% endaddtoblock %}
+
+    <header class="carousel-cabecalho" style="width:{{ instance.largura }}">
+        {% if instance.imagem_titulo %}
+            <img class="carousel-imagem-titulo" src="{{ instance.imagem_titulo.url }}">
+        {% endif %}
+        {% if instance.titulo %}
+            <span class="carousel-titulo">{{ instance.titulo }}</span>
+        {% endif %}
+    </header>
+
+    <section {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+        <carousel interval="{{ instance.velocidade }}"
+                  style="width:{{ instance.largura }};
+                         {% if instance.altura %}min-height:{{ instance.altura }}{% endif %}">
+            {% for pagina in paginas %}
+                <slide {% if forloop.counter0 == 0 %}active{% endif %} class="carousel-slider">
+                    {% for plugin in pagina %}
+                        <div class="carousel-slider-item"
+                             style="width: {{ itens.largura }};
+                                    {% if itens.altura %}height:{{ itens.altura }}{% endif %}">
+                            {% render_plugin plugin %}
+                        </div>
+                    {% endfor %}
+                </slide>
+            {% endfor %}
+        </carousel>
+    </section>
+{% endblock %}

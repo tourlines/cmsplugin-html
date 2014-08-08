@@ -19,12 +19,16 @@
     </script>
 {% endaddtoblock %}
 
-<section {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
-    <carousel interval="{{ instance.velocidade }}" style="width:{{ instance.largura }}px">
-        {% for plugin in instance.child_plugin_instances %}
-            <slide {% if forloop.counter0 == 0 %}active{% endif %} style="height: {{ instance.altura }}px">
-                {% render_plugin plugin %}
-            </slide>
-        {% endfor %}
-    </carousel>
-</section>
+{% block carousel %}
+    <section {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+        <carousel interval="{{ instance.velocidade }}" style="width:{{ instance.largura }}px">
+            {% block slides %}
+                {% for plugin in instance.child_plugin_instances %}
+                    <slide {% if forloop.counter0 == 0 %}active{% endif %} style="height: {{ instance.altura }}px">
+                        {% render_plugin plugin %}
+                    </slide>
+                {% endfor %}
+            {% endblock %}
+        </carousel>
+    </section>
+{% endblock %}

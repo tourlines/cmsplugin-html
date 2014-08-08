@@ -1,0 +1,13 @@
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% addtoblock "css" %}
+    <link href="{% static "cmsplugin_javascript/css/grid_itens/base.css" %}" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+
+<a href="{{ instance.url }}" target={{ instance.target }}>
+    <div class="grid-item">
+        <h5>{{ instance.titulo }}</h6>
+        <p>{{ instance.descricao }}</p>
+    </div>
+</a>

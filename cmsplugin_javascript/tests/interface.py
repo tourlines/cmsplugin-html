@@ -12,9 +12,13 @@
 try:
     from cms_.djangocms.plugins.html.cmsplugin_html.tests.cms_plugins import \
         base as test_base
+    from cms_.djangocms.plugins.html.cmsplugin_javascript import consts
+    from cms_.djangocms.plugins.html.cmsplugin_javascript import fields
     from cms_.djangocms.plugins.html.cmsplugin_javascript import models
     from cms_.djangocms.plugins.html.cmsplugin_javascript import \
         cms_plugins
 except ImportError:
+    from cmsplugin_javascript import consts
+    from cmsplugin_javascript import fields
     from cmsplugin_javascript import models
     from cmsplugin_javascript import cms_plugins

@@ -15,6 +15,9 @@ class BasePlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def __repr__(self):
+        return '<%s>' % self.__class__.__name__
+
 
 class EnderecoPlugin(BasePlugin):
     model = EnderecoPluginModel
@@ -34,10 +37,13 @@ class MapPlugin(BasePlugin):
         return retorno
 
 
-# A todo momento que este arquivo é importado ele tenta registrar estes plugins
-# procedimento que gera erro pois o django cms já carregou os mesmos
+# FIXME: A todo momento que este arquivo é importado ele tenta registrar estes
+# plugins procedimento que gera erro pois o django cms já carregou os mesmos
 try:
     plugin_pool.register_plugin(EnderecoPlugin)
+except PluginAlreadyRegistered:
+    pass
+try:
     plugin_pool.register_plugin(MapPlugin)
 except PluginAlreadyRegistered:
     pass

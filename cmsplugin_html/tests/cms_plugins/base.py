@@ -124,13 +124,15 @@ class PluginBaseTest(TestCase):
     def _validar_plugin(
             self, name, allow_children=False, child_classes=None,
             model=CMSPlugin, render_template='', filter_horizontal=(),
-            exclude=()):
+            exclude=(), require_parent=False, parent_classes=None):
 
         self.assertEqual(self.get_plugin().name, name, (
             'O nome %s é diferente de %s' % (
                 self.get_plugin().name[0:], name[0:])))
         self.assertEqual(self.get_plugin().allow_children, allow_children)
         self.assertEqual(self.get_plugin().child_classes, child_classes)
+        self.assertEqual(self.get_plugin().require_parent, require_parent)
+        self.assertEqual(self.get_plugin().parent_classes, parent_classes)
         self.assertEqual(
             self.get_plugin().filter_horizontal, filter_horizontal)
 
