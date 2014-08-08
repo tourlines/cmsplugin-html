@@ -1,0 +1,6 @@
+recursive-include cmsplugin_html/migrations *
+recursive-include cmsplugin_html/static *
+recursive-include cmsplugin_html/templates *
+recursive-include cmsplugin_javascript/migrations *
+recursive-include cmsplugin_javascript/static *
+recursive-include cmsplugin_javascript/templates *

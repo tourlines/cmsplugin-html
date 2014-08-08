@@ -1,0 +1,23 @@
+.address-plugin {
+    font-size: 11px;
+    line-height: 1.5em;
+    color: #FFFFFF;
+    margin-top: 60px;
+}
+.address-plugin .border {
+    width: 7px;
+    height: 26px;
+    background-color: green;
+    border-radius: 3px;
+    float: left;
+    margin-right:15px;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.address-plugin .vcard {
+    font-style: normal;
+}
+.address-plugin .vcard .fn,
+.address-plugin .vcard .tel .type {
+    display: none;
+}

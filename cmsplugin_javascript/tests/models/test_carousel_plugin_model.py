@@ -1,4 +1,5 @@
 # coding: utf-8
+from django.utils.translation import ugettext_lazy as _
 from test_tools.test import CMSPluginModelTestCase
 from ..interface import models
 
@@ -13,7 +14,7 @@ class EnderecoPluginModelTest(CMSPluginModelTestCase):
     campos = [
         {
             'nome': 'indicador', 'field': 'BooleanField', 'help_text': True,
-            'verbose_name': True, 'default': True
+            'verbose_name': _('paginação'), 'default': True
         }, {
             'nome': 'largura', 'field': 'PositiveSmallIntegerField',
             'help_text': True, 'null': True, 'blank': True

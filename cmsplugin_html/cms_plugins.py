@@ -30,7 +30,7 @@ class MapPlugin(BasePlugin):
 
     def render(self, context, instance, placeholder):
         retorno = super(MapPlugin, self).render(context, instance, placeholder)
-        retorno.update({'areas': instance.htmlareatagmodel_set.all()})
+        retorno.update({'areas': instance.areatagmodel_set.all()})
         return retorno
 
 

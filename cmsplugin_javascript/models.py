@@ -7,10 +7,10 @@ from cms.models import CMSPlugin
 class CarouselPluginModel(CMSPlugin):
 
     indicador = models.BooleanField(
-        help_text=(_(
+        help_text=_(
             'Se irá aparecer as "bolinhas" que permite o usuário avançar/'
             'recuar sliders'
-        )), verbose_name='paginação', default=True)
+        ), verbose_name=_('paginação'), default=True)
     altura = models.PositiveSmallIntegerField(
         help_text=_('Altura do carousel, em pixels'), blank=True, null=True)
     largura = models.PositiveSmallIntegerField(

@@ -78,9 +78,27 @@ class PluginBaseTest(TestCase):
                 'ser %s mas foi definido como %s' % (esperado, definido)
             ))
 
-    def test_local_template(self, template_middle=''):
-        from lib.string_.conversores import camelcase_to
+    def camelcase_to(self, texto, underscore=False, space=False):
+        """
+        Converte uma string em CamelCase para underscore ou espaços
 
+        THANKS: http://stackoverflow.com/questions/1175208/elegant-python-
+        function-to-convert-camelcase-to-camel-case
+        """
+        import re
+
+        if underscore:
+            novo = r'\1_\2'
+        elif space:
+            novo = r'\1 \2'
+        else:
+            raise AttributeError('É preciso que underscore ou space seja True')
+
+        novo_texto = re.sub('(.)([A-Z][a-z]+)', novo, texto)
+
+        return re.sub('([a-z0-9])([A-Z])', novo, novo_texto).lower()
+
+    def test_local_template(self, template_middle=''):
         if self.__class__.__name__ == 'PluginBaseTest' or \
                 not self.validar_local_template:
             return
@@ -93,7 +111,7 @@ class PluginBaseTest(TestCase):
         esperado = '%s/%s%s.html' % (
             self.nome_app or self.get_plugin().model._meta.app_label,
             template_middle,
-            camelcase_to(
+            self.camelcase_to(
                 self.get_plugin().__name__.split('Plugin')[0], underscore=True)
         )
 

@@ -1,1 +1,3 @@
 *.pyc
+test_project/media/
+test_project/static/

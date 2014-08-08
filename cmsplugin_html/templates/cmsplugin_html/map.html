@@ -1,8 +1,10 @@
-{% load customtags cms_tags staticfiles sekizai_tags %}
+{% load cms_tags %}
+{% load staticfiles %}
+{% load sekizai_tags %}
 
 {% addtoblock "js" %}
     {% if instance.usar_tooltip %}
-        {% js "tooltip.min.js" ext=True %}
+        <script type="text/javascript" src="{% static "cms_plugin_html/js/tooltip.min.js" %}"></script>
     {% endif %}
 {% endaddtoblock %}
 

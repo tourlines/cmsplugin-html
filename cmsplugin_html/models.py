@@ -26,11 +26,11 @@ class MapPluginModel(CMSPlugin):
 
     imagem = FilerImageField(null=False, blank=False)
     usar_tooltip = models.BooleanField(
-        help_text=(
-            'Por padrão o plugin cria apenas uma área clicável na imagem, '
-            'caso deseje que aparece a texto de descrição quando o usuário '
-            'passar o mouse em cima da área habilite este opção.'),
-        default=False, blank=True, verbose_name='exibir mensagem')
+        help_text=_(
+            'Por padrão o plugin cria apenas uma área clicável na imagem. '
+            'Caso deseje que apareça um texto de descrição quando o usuário '
+            'passar o mouse em cima da área, habilite esta opção.'),
+        default=False, blank=True, verbose_name=_('exibir mensagem'))
 
     def copy_relations(self, oldinstance):
         for item in oldinstance.areatagmodel_set.all():

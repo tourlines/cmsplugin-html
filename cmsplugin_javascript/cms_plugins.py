@@ -3,11 +3,12 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 from .models import CarouselPluginModel
 
+# FIXME/SEE: cmsplugin_javascript/tests/interface.py
 try:
     from lib.cms_.djangocms.plugins.html.cmsplugin_html.cms_plugins import \
         BasePlugin
 except ImportError:
-    from cmsplugin_html.cms_plugin import BasePlugin
+    from cmsplugin_html.cms_plugins import BasePlugin
 
 
 class CarouselPlugin(BasePlugin):

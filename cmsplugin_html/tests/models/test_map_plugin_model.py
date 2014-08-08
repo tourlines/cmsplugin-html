@@ -1,7 +1,8 @@
 # coding: utf-8
-from test_tools.test import CMSPluginModelTestCase
+from django.utils.translation import ugettext_lazy as _
 from filer.fields.image import FilerImageField
 from model_mommy import mommy
+from test_tools.test import CMSPluginModelTestCase
 from ..interface import models
 
 
@@ -18,7 +19,8 @@ class MapPluginModelTest(CMSPluginModelTestCase):
             'nome': 'imagem', 'field': FilerImageField
         }, {
             'nome': 'usar_tooltip', 'field': 'BooleanField', 'blank': True,
-            'default': False, 'verbose_name': True, 'help_text': True
+            'default': False, 'verbose_name': _('exibir mensagem'),
+            'help_text': True
         },
     ]
 
