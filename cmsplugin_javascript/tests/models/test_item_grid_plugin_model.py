@@ -37,7 +37,10 @@ class ItemGridTest(ModelTestCase):
             'nome': 'status', 'field': 'PositiveSmallIntegerField',
             'blank': True, 'null': False, 'editable': False,
             'default': ItemGridPluginModel.Status.VALIDO,
-            'choices': (['valido', 'válido'], 'expirado', ['pre_cadastro', 'pré-cadastro'])
+            'choices': (
+                ['valido', 'válido'],
+                'expirado',
+                ['pre_cadastro', 'pré-cadastro'])
         },
     ]
 
@@ -159,3 +162,10 @@ class ItemGridTest(ModelTestCase):
 
         self.assertEqual(item_grid.get_max_largura(), '200px')
         self.assertEqual(item_grid.get_max_altura(), '200px')
+
+    def test_unicode(self):
+        plugin = mommy.make(ItemGridPluginModel)
+
+        self.assertEqual(plugin.__unicode__(), '%s | Status: %s' % (
+            plugin.titulo,
+            dict(ItemGridPluginModel.STATUS_CHOICES)[plugin.status]))

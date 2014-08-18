@@ -74,7 +74,9 @@ class GridPluginTest(ModelTestCase):
 
         obj = mommy.make(GridPluginModel, colunas=2, itens_pagina=4)
 
-        self.assertEqual(len(obj.get_paginas_grid()), 0)
+        paginas, plugins_invalidos = obj.get_paginas_grid()
+        self.assertEqual(len(paginas), 0)
+        self.assertEqual(len(plugins_invalidos), 0)
 
         child_plugin_validos = [
             mommy.make(ItemGridPluginModel),
@@ -102,7 +104,11 @@ class GridPluginTest(ModelTestCase):
 
         esperado = [4, 4, 1]
 
-        retorno = obj.get_paginas_grid()
+        retorno, plugins_invalidos = obj.get_paginas_grid()
+
+        # Garante que os plugins inválidos serão retornados:
+        self.assertItemsEqual(plugins_invalidos, child_plugin_invalidos)
+
         # Garante que possui a mesma quantidade de páginas
         self.assertEqual(len(esperado), len(retorno))
 
@@ -117,6 +123,7 @@ class GridPluginTest(ModelTestCase):
                 objetos_retornados.append(elemento)
         self.assertItemsEqual(child_plugin_validos, objetos_retornados)
 
+    def test_unicode(self):
+        plugin = mommy.make(GridPluginModel)
 
-
-
+        self.assertEqual(plugin.__unicode__(), '%s' % (plugin.titulo))

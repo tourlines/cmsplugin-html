@@ -48,10 +48,13 @@ class GridPlugin(BasePlugin):
         retorno = \
             super(GridPlugin, self).render(context, instance, placeholder)
 
+        paginas, plugins_invalidos = instance.get_paginas_grid()
+
         retorno.update({
             # Páginas é uma relação de sliders e plugins que deve aparecer
             # em cada slide
-            'paginas': instance.get_paginas_grid(),
+            'paginas': paginas,
+            'plugins_invalidos': plugins_invalidos,
             # Dentro de itens deve ter todas as informações referente aos
             # mesmos como a altura e largura de cada um deles
             'itens': {

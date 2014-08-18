@@ -33,6 +33,11 @@
                     {% endfor %}
                 </slide>
             {% endfor %}
+
+            {% for plugin_invalido in plugins_invalidos %}
+                <div {% if plugin_invalido.status != 1 %}style="display:none"{% endif %}>
+                {% render_plugin plugin_invalido %}
+            {% endfor %}
         </carousel>
     </section>
 {% endblock %}

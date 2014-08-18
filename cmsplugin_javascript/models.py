@@ -35,6 +35,10 @@ class GridPluginModel(CMSPlugin):
         blank=True,
         default=DEFAULT_TRANSITION_INTERVAL)
 
+    def __unicode__(self):
+        return u'%s' % self.titulo or \
+            super(GridPluginModel, self).__unicode__()
+
     def get_valor_sem_unidade(self, valor):
         """
         Retorna a parte inteira de um valor sem a sua unidade
@@ -91,9 +95,19 @@ class GridPluginModel(CMSPlugin):
         colunas e itens_pagina e os plugins são organizados de forma
         aleatoria dentro da página.
 
-        ALERT: Aparece na saída somente os plugins que estão validos
+        FIXME: Na teoría esta função deveria retornar apenas os
+        plugins válidos, contudo (aparentemente) o django cms não
+        permite que o usuário edite um plugin que não aparece na tela
+        e por isto precisamos retornar TODOS os plugins. No caso
+        foi realizada uma divisão para que esta função retorne duas
+        variáveis (tupla) uma contendo as páginas com os plugins
+        válidos e outra variáveĺ contendo apenas uma lista de plugins
+        invalidos. :D
         """
         retorno = []
+
+        plugin_invalidos = []
+
         if self.child_plugin_instances:
             plugins_validos = []
             for plugin in self.child_plugin_instances:
@@ -109,6 +123,8 @@ class GridPluginModel(CMSPlugin):
 
                 if plugin.esta_valido():
                     plugins_validos.append(plugin)
+                else:
+                    plugin_invalidos.append(plugin)
 
             qtd_plugins = len(plugins_validos)
             numero_paginas = qtd_plugins / self.itens_pagina
@@ -121,7 +137,7 @@ class GridPluginModel(CMSPlugin):
                 fim = (pagina + 1) * self.itens_pagina
                 retorno.append(plugins_validos[inicio:fim])
 
-        return retorno
+        return retorno, plugin_invalidos
 
 
 class ItemGridPluginModel(CMSPlugin):
@@ -164,6 +180,11 @@ class ItemGridPluginModel(CMSPlugin):
     status = models.PositiveSmallIntegerField(
         choices=STATUS_CHOICES, blank=True, default=Status.VALIDO,
         editable=False)
+
+    def __unicode__(self):
+        return u'%s | Status: %s' % (
+            self.titulo,
+            dict(ItemGridPluginModel.STATUS_CHOICES)[self.status])
 
     def validar_atributos(self, *args, **kwargs):
         """
