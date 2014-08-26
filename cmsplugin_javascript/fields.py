@@ -88,7 +88,7 @@ class PercentIntegerField(models.CharField):
 def gen_percent_integer(max_length):
     from random import randint
 
-    valor = randint(0, int('9' * max_length))
+    valor = randint(0, int('9' * (int(max_length) - 2)))
     unidade = UNIDADES[randint(0, len(UNIDADES) - 1)]
     return '%s%s' % (valor, unidade)
 

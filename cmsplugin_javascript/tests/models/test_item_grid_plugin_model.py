@@ -12,7 +12,7 @@ class ItemGridTest(ModelTestCase):
 
     model = ItemGridPluginModel
     meta = {}
-    campos = [
+    atributos = [
         {
             'nome': 'url', 'field': 'CharField', 'max_length': 200
         }, {

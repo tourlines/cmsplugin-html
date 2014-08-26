@@ -1,11 +1,11 @@
 # coding: utf-8
 from django.utils.translation import ugettext_lazy as _
 from model_mommy import mommy
-from .base import PluginBaseTest
+from .base import CMSPluginTestCase
 from ..interface import models
 
 
-class GridPluginTest(PluginBaseTest):
+class GridPluginTest(CMSPluginTestCase):
     plugin = 'GridPlugin'
 
     atributos = {

@@ -11,7 +11,7 @@ class AreaTagModelTest(CMSPluginModelTestCase):
 
     model = AreaTagModel
     meta = {}
-    campos = [
+    atributos = [
         {
             'nome': 'shape', 'field': 'CharField', 'max_length': 7,
             'choices': (

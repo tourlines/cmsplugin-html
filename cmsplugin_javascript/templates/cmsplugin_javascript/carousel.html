@@ -8,19 +8,12 @@
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
-    <script type="text/javascript" src="{% static "cmsplugin_javascript/bootstrap/carousel-tpls.min.js" %}"></script>
-    <script type="text/javascript">
-        APPS_NAMES = ["ui.bootstrap", "ui.bootstrap.tpls"];
-        for (index = 0; index < APPS_NAMES.length; ++index) {
-            if (mainApp.requires.indexOf(APPS_NAMES[index]) === -1) {
-                mainApp.requires.push(APPS_NAMES[index]);
-            }
-        }
-    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular-ui/ui-bootstrap-tpls.min.js" %}"></script>
 {% endaddtoblock %}
 
 {% block carousel %}
-    <section {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+    <section ng-app="ui.bootstrap" {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
         <carousel interval="{{ instance.velocidade }}" style="width:{{ instance.largura }}px">
             {% block slides %}
                 {% for plugin in instance.child_plugin_instances %}

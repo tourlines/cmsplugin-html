@@ -1,9 +1,9 @@
 # coding: utf-8
 from django.utils.translation import ugettext_lazy as _
-from .base import PluginBaseTest
+from .base import CMSPluginTestCase
 
 
-class CarouselPluginTest(PluginBaseTest):
+class CarouselPluginTest(CMSPluginTestCase):
 
     plugin = 'CarouselPlugin'
     atributos = {

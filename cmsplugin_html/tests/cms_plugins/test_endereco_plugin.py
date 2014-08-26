@@ -1,9 +1,9 @@
 # coding: utf-8
-from .base import PluginBaseTest
 from django.utils.translation import ugettext_lazy as _
+from .base import CMSPluginTestCase
 
 
-class EnderecoPluginTest(PluginBaseTest):
+class EnderecoPluginTest(CMSPluginTestCase):
 
     plugin = 'EnderecoPlugin'
 

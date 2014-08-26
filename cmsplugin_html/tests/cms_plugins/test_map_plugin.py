@@ -1,14 +1,14 @@
 # coding: utf-8
-from .base import PluginBaseTest
 from django.utils.translation import ugettext_lazy as _
 from model_mommy import mommy
+from .base import CMSPluginTestCase
 from ..interface import models
 
 
 MapPluginModel = models.MapPluginModel
 
 
-class MapPluginTest(PluginBaseTest):
+class MapPluginTest(CMSPluginTestCase):
 
     plugin = 'MapPlugin'
     validar_nome_model = False
