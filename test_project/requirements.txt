@@ -6,7 +6,7 @@ dj-database-url==0.3.0
 dj-static==0.0.5
 flake8==2.1.0
 https://github.com/rescale/django-jenkins.git#egg=django-jenkins
-git+https://github.com/tourlines/django-test-tools.git@484464bde51411adea1ea0e6bf7fc3b5d1b8fb1c
+git+https://github.com/tourlines/django-test-tools.git@0989209b64a484dba8d7b4e66956550fef9f5e4e
 model-mommy==1.2
 nosexcover==1.0.8
 pylint==1.1.0

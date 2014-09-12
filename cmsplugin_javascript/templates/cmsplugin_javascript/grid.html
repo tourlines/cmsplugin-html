@@ -18,7 +18,7 @@
         {% endif %}
     </header>
 
-    <section ng-app="ui.bootstrap" {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+    <section ng-module="ui.bootstrap" {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
         <carousel interval="{{ instance.velocidade }}"
                   style="width:{{ instance.largura }};
                          {% if instance.altura %}min-height:{{ instance.altura }}{% endif %}">
