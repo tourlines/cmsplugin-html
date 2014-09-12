@@ -1,9 +1,9 @@
 # coding: utf-8
-from .base import PluginBaseTest
 from django.utils.translation import ugettext_lazy as _
+from .base import CMSPluginTestCase
 
 
-class GridPluginTest(PluginBaseTest):
+class GridPluginTest(CMSPluginTestCase):
     plugin = 'ItemGridPlugin'
     validar_local_template = False
 

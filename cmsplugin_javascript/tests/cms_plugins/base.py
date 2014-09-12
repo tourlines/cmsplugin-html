@@ -2,7 +2,7 @@
 from ..interface import test_base
 
 
-class PluginBaseTest(test_base.PluginBaseTest):
+class CMSPluginTestCase(test_base.CMSPluginTestCase):
 
     def get_plugin(self):
         from ..interface import cms_plugins

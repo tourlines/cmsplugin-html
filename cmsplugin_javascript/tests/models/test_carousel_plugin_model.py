@@ -11,7 +11,7 @@ class EnderecoPluginModelTest(CMSPluginModelTestCase):
 
     model = CarouselPluginModel
     meta = {}
-    campos = [
+    atributos = [
         {
             'nome': 'indicador', 'field': 'BooleanField', 'help_text': True,
             'verbose_name': _('paginação'), 'default': True

@@ -1,5 +1,4 @@
 # coding: utf-8
-from django.utils.translation import ugettext_lazy as _
 from model_mommy import mommy
 from test_tools.test import ModelTestCase
 from ..interface import models, consts, fields
@@ -13,7 +12,7 @@ class GridPluginTest(ModelTestCase):
 
     model = GridPluginModel
     meta = {}
-    campos = [
+    atributos = [
         {
             'nome': 'titulo', 'field': 'CharField', 'max_length': 40,
             'blank': True, 'null': True

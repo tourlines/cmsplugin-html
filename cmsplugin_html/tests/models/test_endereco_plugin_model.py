@@ -9,7 +9,7 @@ class EnderecoPluginModelTest(CMSPluginModelTestCase):
 
     model = EnderecoPluginModel
     meta = {}
-    campos = [
+    atributos = [
         {'nome': 'nome', 'field': 'CharField', "max_length": 30},
         {'nome': 'logradouro', 'field': 'CharField', "max_length": 26},
         {'nome': 'numero', 'field': 'PositiveSmallIntegerField'},

@@ -14,7 +14,7 @@ class MapPluginModelTest(CMSPluginModelTestCase):
 
     model = MapPluginModel
     meta = {}
-    campos = [
+    atributos = [
         {
             'nome': 'imagem', 'field': FilerImageField
         }, {
