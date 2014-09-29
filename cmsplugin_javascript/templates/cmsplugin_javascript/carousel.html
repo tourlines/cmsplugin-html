@@ -4,12 +4,19 @@
 
 {% addtoblock "css" %}
     <link href="{% static "cmsplugin_javascript/bootstrap/carousel.css" %}" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+{% addtoblock "css" %}
     <link href="{% static "cmsplugin_javascript/css/carousel.css" %}" rel="stylesheet" type="text/css" />
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+{% endaddtoblock %}
+{% addtoblock "js" %}
     <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular-ui/ui-bootstrap-tpls.min.js" %}"></script>
+{% endaddtoblock %}
+{% addtoblock "js" %}
+    <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular.ng-modules.min.js" %}"></script>
 {% endaddtoblock %}
 
 {% block carousel %}
