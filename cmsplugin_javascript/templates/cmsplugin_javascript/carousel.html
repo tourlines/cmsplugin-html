@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% addtoblock "css" %}
-    <link href="{% static "cmsplugin_javascript/bootstrap/carousel.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "cmsplugin_javascript/css/bootstrap/carousel.css" %}" rel="stylesheet" type="text/css" />
 {% endaddtoblock %}
 {% addtoblock "css" %}
     <link href="{% static "cmsplugin_javascript/css/carousel.css" %}" rel="stylesheet" type="text/css" />
@@ -14,13 +14,14 @@
 {% endaddtoblock %}
 {% addtoblock "js" %}
     <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular-ui/ui-bootstrap-tpls.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular.ng-modules.min.js" %}"></script>
 {% endaddtoblock %}
 {% addtoblock "js" %}
     <script type="text/javascript" src="{% static "cmsplugin_javascript/ext/angular.ng-modules.min.js" %}"></script>
 {% endaddtoblock %}
 
 {% block carousel %}
-    <section ng-app="ui.bootstrap" {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
+    <section ng-module="ui.bootstrap" {% if not instance.indicador %}class="esconder-indicators"{% endif %}>
         <carousel interval="{{ instance.velocidade }}" style="width:{{ instance.largura }}px">
             {% block slides %}
                 {% for plugin in instance.child_plugin_instances %}
